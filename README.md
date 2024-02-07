@@ -1,6 +1,6 @@
 # README
 
-make sure you have the migrations ran for sidequeue
+make sure you have the migrations ran for solid queue
 ```shell
 rails db:create && rails db:migrate
 ```
@@ -10,7 +10,7 @@ start the app like normal
 rails s
 ```
 
-if you comment out the puma plugin you'll need to start sidequeue separately
+if you comment out the puma plugin you'll need to start solid queue separately
 ```ruby
 # puma.rb
 plugin :solid_queue
