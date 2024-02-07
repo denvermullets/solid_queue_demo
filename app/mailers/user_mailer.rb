@@ -8,6 +8,8 @@ class UserMailer < ApplicationMailer
   def receipt
     @greeting = "Hi"
 
+    # this_job_will_fail
+
     mail to: "to@example.org"
   end
 end

@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+make sure you have the migrations ran for sidequeue
+```shell
+rails db:create && rails db:migrate
+```
 
-Things you may want to cover:
+start the app like normal
+```shell
+rails s
+```
 
-* Ruby version
+if you comment out the puma plugin you'll need to start sidequeue separately
+```ruby
+# puma.rb
+plugin :solid_queue
+```
 
-* System dependencies
+SQ
+```shell
+bundle exec rake solid_queue:start
+```
 
-* Configuration
+scope out Mission Control
+```
+http://localhost:3000/jobs
+```
 
-* Database creation
+add a que task (or 1000)
+```ruby
+UserMailer.receipt.deliver_later
+```
+cause a mail task to fail by uncommenting the line in `user_mailer.rb`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+scope it out!
